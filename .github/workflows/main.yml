@@ -32,4 +32,4 @@ jobs:
       - name: 🐳 Build Docker image
         run : docker build -t shaikshaima29/ci-cd-nodejs-app .
       - name: 📤 Push image to DockerHub
-        run: docker push ${{ secrets.DOCKER_USERNAME }}/ci-cd-app
+        run: docker push shaikshaima29/ci-cd-app
