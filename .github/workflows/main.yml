@@ -10,26 +10,28 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: 📥 Checkout code
+      - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: 🟢 Set up Node.js
+      - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '16'
 
-      - name: 📦 Install dependencies
+      - name: Install dependencies
         run: npm install
 
-      - name: 🧪 Run tests
+      - name: Run tests
         run: npm test
       - name : list
         run : ls
       
 
-      - name: 🔐 Login to DockerHub
+      - name: Login to DockerHub
         run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
-      - name: 🐳 Build Docker image
+    
+      - name: Build Docker image
         run : docker build -t shaikshaima29/ci-cd-nodejs-app .
-      - name: 📤 Push image to DockerHub
+     
+      - name: Push image to DockerHub
         run: docker push shaikshaima29/ci-cd-nodejs-app
